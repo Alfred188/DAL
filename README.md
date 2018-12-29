@@ -9,7 +9,11 @@ Select:
     string spCom = string.Empty;
     DataTable dt = new DataTable();
 
-    spCom = "SELECT  [ID],[Name] from [Table] ";
+    spCom = "SELECT  [ID],[Name] from [Table] where [ID]=@ID";
+    dbm = new DatabaseModel();
+    dbm.ParametrName = "@ID";
+    dbm.Value = Id.Text;
+    dbList.Add(dbm);
 
     int result = 0;
     dt = dal.selectTable(spCom, out result);
