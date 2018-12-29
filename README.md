@@ -1,5 +1,5 @@
 # DAL
-A lib to help in codding
+A lib to help in coding
 
 # How to use
 
