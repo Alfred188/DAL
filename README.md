@@ -1,7 +1,8 @@
 # DAL
 A lib to help in codding
 
-#How to use
+# How to use
+
 Select:
     DAL dal = new DAL();
     string spCom = string.Empty;
