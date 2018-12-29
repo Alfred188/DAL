@@ -12,10 +12,7 @@ namespace IGNco.Helper
 {
     public class DAL
     {
-        public static string logedin { get; set; }
-        public static string dataSource { get; set; }
-        public static string googlelogedinImg { get; set; }
-        public static string ConnectionStr = "Data Source="+ dataSource + ";Initial Catalog=SPProject;Integrated Security=True";
+        public static string ConnectionStr = "";
         public int runCommand(string spName, List<DatabaseModel> Spcmd)
         {
             string pro = ConnectionStr;
@@ -26,7 +23,6 @@ namespace IGNco.Helper
             try
             {
                 SqlCommand cmd = new SqlCommand(spName, thisconnection);
-                //cmd.CommandType = CommandType.StoredProcedure;
 
                 thisconnection.Open();
                 foreach (var param in Spcmd)
@@ -57,7 +53,6 @@ namespace IGNco.Helper
             try
             {
                 SqlCommand cmd = new SqlCommand(spName, thisconnection);
-                //cmd.CommandType = CommandType.StoredProcedure;
                 thisconnection.Open();
 
                 foreach (var param in Spcmd)
@@ -194,7 +189,7 @@ namespace IGNco.Helper
             return dtsb;
         }
 
-        public string persianCDate()
+        public string persianDateYear()
         {
             System.Globalization.PersianCalendar oPersianC = new System.Globalization.PersianCalendar();
             string Day, Month, Year, Date = "";
@@ -243,58 +238,6 @@ namespace IGNco.Helper
             testc += ":" + oPersianC.GetSecond(System.DateTime.Now).ToString();
             return testc;
         }
-
-        public void Basket(ref DataTable basketDt, string id, string price, string count)
-        {
-            //DataTable dtsb = new DataTable();
-            if (basketDt.Rows.Count == 0)
-            {
-                DataColumn c0 = new DataColumn("ProId", typeof(System.String));
-                DataColumn c1 = new DataColumn("ProPrice", typeof(System.String));
-                DataColumn c2 = new DataColumn("ProCount", typeof(System.String));
-                if (!basketDt.Columns.Contains("ProId"))
-                {
-                    basketDt.Columns.Add(c0);
-                    basketDt.Columns.Add(c1);
-                    basketDt.Columns.Add(c2);
-                }
-            }
-
-            bool insert = false;
-            for (int i = 0; i < basketDt.Rows.Count; i++)
-            {
-                if (id == basketDt.Rows[i][0].ToString())
-                {
-                    float number = float.Parse(count) + float.Parse(basketDt.Rows[i][2].ToString());
-                    basketDt.Rows[i][2] = number.ToString();
-                    insert = true;
-                    break;
-                }
-            }
-
-            if (!insert)
-            {
-                DataRow dr = basketDt.NewRow();
-                dr["ProId"] = id;
-                dr["ProPrice"] = price;
-                dr["ProCount"] = count;
-                basketDt.Rows.Add(dr);
-            }
-
-        }
-
-        //public void sendSms(string text, string mobile, ref int SmsResult)
-        //{
-        //    string txt = text;
-        //    string smsusername = ConfigurationManager.AppSettings["smsUsername"].ToString();
-        //    string smspass = ConfigurationManager.AppSettings["smsPassword"].ToString();
-        //    byte[] state = null;
-        //    long[] rid = null;
-        //    string[] mobiles = { mobile };
-
-        //    //net.postgah.Send sms = new net.postgah.Send();
-        //    //SmsResult = sms.SendSms(smsusername, smspass, "30004015999133", mobiles, txt, false, ref state, ref rid);
-        //}
 
         public string getTextDoc(string path)
         {
@@ -357,82 +300,6 @@ namespace IGNco.Helper
             }
             return list;
         }
-        public static string setpino(string get)
-        {
-            string tb = get;
-            string lasto = "";
-            tb = tb.Replace(",", "");
-            if (tb.Length > 3)
-            {
-                if (tb.Length > 6)
-                {
-                    if (tb.Length > 9)
-                    {
-                        if (tb.Length > 12)
-                        {
-                            int u = tb.Length - 12;
-                            string l = tb;
-                            l = l.Replace(",", "");
-                            string a = l.Substring(0, u);
-                            string b = l.Substring(u, 3);
-                            string c = l.Substring(u + 3, 3);
-                            string d = l.Substring(u + 3 + 3, 3);
-                            string e = l.Substring(u + 3 + 3 + 3, 3);
-                            a = a.Replace(",", "");
-                            b = b.Replace(",", "");
-                            c = c.Replace(",", "");
-                            d = d.Replace(",", "");
-                            e = e.Replace(",", "");
-                            lasto = a + "," + b + "," + c + "," + d + "," + e;
-
-                        }
-                        else
-                        {
-                            int u = tb.Length - 9;
-                            string l = tb;
-                            l = l.Replace(",", "");
-                            string a = l.Substring(0, u);
-                            string b = l.Substring(u, 3);
-                            string c = l.Substring(u + 3, 3);
-                            string d = l.Substring(u + 3 + 3, 3);
-                            a = a.Replace(",", "");
-                            b = b.Replace(",", "");
-                            c = c.Replace(",", "");
-                            d = d.Replace(",", "");
-                            lasto = a + "," + b + "," + c + "," + d;
-                        }
-                    }
-                    else
-                    {
-                        int u = tb.Length - 6;
-                        string l = tb;
-                        l = l.Replace(",", "");
-                        string a = l.Substring(0, u);
-                        string b = l.Substring(u, 3);
-                        string c = l.Substring(u + 3, 3);
-                        a = a.Replace(",", "");
-                        b = b.Replace(",", "");
-                        c = c.Replace(",", "");
-                        lasto = a + "," + b + "," + c;
-                    }
-                }
-                else
-                {
-                    int u = tb.Length - 3;
-                    string l = tb;
-                    string a = l.Substring(0, u);
-                    string b = l.Substring(u, 3);
-                    a = a.Replace(",", "");
-                    b = b.Replace(",", "");
-                    string f = a + "," + b;
-                    lasto = f;
-
-                }
-                get = lasto;
-            }
-
-            return get;
-        }
 
         public string getData(string fileName)
         {
@@ -473,6 +340,17 @@ namespace IGNco.Helper
 
     }
 
+    public class _EnumManager
+    {
+        public enum DbState
+        {
+            success,
+            hasrows,
+            empty,
+            error
+        }
+
+    }
     public class ListModel
     {
         public string Member { get; set; }
@@ -482,13 +360,6 @@ namespace IGNco.Helper
     {
         public string ParametrName { get; set; }
         public object Value { get; set; }
-    }
-
-    public class UserModel
-    {
-        public string Name { get; set; }
-        public object Role { get; set; }
-        public object BaseId { get; set; }
     }
 
     public static class Prompt
@@ -515,4 +386,6 @@ namespace IGNco.Helper
             return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : "";
         }
     }
+
+
 }
