@@ -1,0 +1,1 @@
+﻿//Help to code faster and easier
