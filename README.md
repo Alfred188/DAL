@@ -4,6 +4,7 @@ A lib to help in codding
 # How to use
 
 Select:
+
     DAL dal = new DAL();
     string spCom = string.Empty;
     DataTable dt = new DataTable();
@@ -18,6 +19,7 @@ Select:
     }
 
 Insert, Update, Delete:
+
     string stb = string.Empty ;
     DAL dal = new DAL();
     string spCom = string.Empty;
