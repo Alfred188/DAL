@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
+using System.Web;
 using System.Windows.Forms;
 
 namespace IGNco.Helper
@@ -152,38 +155,6 @@ namespace IGNco.Helper
                 thisconnection.Close();
             }
             return dt;
-        }
-
-        public static DataTable noRow()
-        {
-            DataTable dtsb = new DataTable();
-            DataColumn c1 = new DataColumn("name", typeof(System.String));
-            if (!dtsb.Columns.Contains("name"))
-            {
-                dtsb.Columns.Add(c1);
-            }
-
-            DataRow dr = dtsb.NewRow();
-            dr["name"] = "false";
-            dtsb.Rows.Add(dr);
-
-            return dtsb;
-        }
-
-        public static DataTable error()
-        {
-            DataTable dtsb = new DataTable();
-            DataColumn c1 = new DataColumn("name", typeof(System.String));
-            if (!dtsb.Columns.Contains("name"))
-            {
-                dtsb.Columns.Add(c1);
-            }
-
-            DataRow dr = dtsb.NewRow();
-            dr["name"] = "er";
-            dtsb.Rows.Add(dr);
-
-            return dtsb;
         }
 
         public string persianDateYear()
