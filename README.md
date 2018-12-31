@@ -1,5 +1,5 @@
 # DAL
-###A lib to help in coding
+### A lib to help in coding
 this lib help to connect to sql server database in C#
 
 # How to use
