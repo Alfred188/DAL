@@ -9,7 +9,7 @@ namespace IGNco.Helper
 {
     public class DAL
     {
-        public static string ConnectionStr = "";
+        public static string ConnectionStr = ""; // Your connection string gose here
         public int runCommand(string spName, List<DatabaseModel> Spcmd)
         {
             string pro = ConnectionStr;
