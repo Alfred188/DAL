@@ -4,7 +4,7 @@ this lib help to connect to sql server database in C#
 
 # How to use
 
-public static string ConnectionStr = ""; // Your connection string gose here
+public static string ConnectionStr = "ConStr"; // Your connection string gose here
 
 Select:
 
