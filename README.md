@@ -35,19 +35,19 @@ Insert, Update, Delete:
             
     spCom = "INSERT into [Table] ([Value1Col],[Value2Col],[Value3Col]) values" +
         " (@Value1,@Value2,@Value3)";
-    dbm = new DatabaseModel();
-    dbm.ParametrName = "@Value1";
-    dbm.Value = "Var1";
+    dbm = new DatabaseModel(){
+    ParametrName = "@Value1",
+    Value = "Var1"};
     dbList.Add(dbm);
             
-    dbm = new DatabaseModel();
-    dbm.ParametrName = "@Value2";
-    dbm.Value = "Var2";
+    dbm = new DatabaseModel(){
+    ParametrName = "@Value2",
+    Value = "Var2"};
     dbList.Add(dbm);
             
-    dbm = new DatabaseModel();
-    dbm.ParametrName = "@Value3";
-    dbm.Value = "Var3";
+    dbm = new DatabaseModel(){
+    ParametrName = "@Value3",
+    Value = "Var3"};
     dbList.Add(dbm);
             
 
